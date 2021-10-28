@@ -14,10 +14,11 @@ defmodule MbtaScheduleReaderWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", MbtaScheduleReaderWeb do
-    pipe_through :browser
+  scope "/api", MbtaScheduleReaderWeb do
+    pipe_through :api
 
-    get "/", PageController, :index
+    get "/", MetroScheduleController, :index
+    get "/metro/:line/:stop/:direction/getNextTime", MetroScheduleController, :getNextTime
   end
 
   # Other scopes may use custom stacks.
