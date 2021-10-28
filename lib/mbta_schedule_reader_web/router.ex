@@ -18,7 +18,7 @@ defmodule MbtaScheduleReaderWeb.Router do
     pipe_through :api
 
     get "/", MetroScheduleController, :index
-    get "/metro/:line/:stop/:direction/getNextTime", MetroScheduleController, :getNextTime
+    get "/metro/:direction/:line/:stop/getNextTime", MetroScheduleController, :getNextTime
   end
 
   # Other scopes may use custom stacks.
