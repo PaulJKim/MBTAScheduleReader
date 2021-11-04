@@ -13,7 +13,6 @@ defmodule MbtaScheduleReaderWeb.MetroScheduleController do
     # Would probably require us to maintain a mapping of stop name to parent stop id.
     # Alexa could maybe handle accounting for different variations of "Harvard Avenue", for example
 
-    # How to pass direction variable to filter for direction??
     IO.inspect(params)
     predictions =
       getPredictions(stop) |>

@@ -22,7 +22,13 @@ defmodule MbtaScheduleReader.NextTrainCalculator do
   def iterateOverPredictions([]), do: nil
 
   def calculateNextTrain(data) do
-    Enum.sort_by(data, &sortByDepartureTime/1)
+    current_datetime = DateTime.from_iso8601((DateTime.to_iso8601(DateTime.now!("US/Eastern"))))
+    Enum.filter(data, &compareDateTimes(&1, current_datetime)) |>
+    Enum.sort_by(&sortByDepartureTime/1)
+  end
+
+  def compareDateTimes(first, second) do
+    DateTime.compare(elem(DateTime.from_iso8601(first["attributes"]["departure_time"]), 1) , elem(second, 1)) == :gt
   end
 
   def sortByDepartureTime(prediction) do
