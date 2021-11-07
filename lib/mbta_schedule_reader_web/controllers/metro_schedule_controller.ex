@@ -19,6 +19,6 @@ defmodule MbtaScheduleReaderWeb.MetroScheduleController do
       filterForDepartureTimeExists() |>
       filterForDirection(direction) |>
       calculateNextTrain()
-    json(conn, List.first(predictions))
+    json(conn, Enum.take(predictions, 3))
   end
 end
