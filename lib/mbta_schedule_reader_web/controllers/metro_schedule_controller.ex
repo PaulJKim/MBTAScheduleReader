@@ -21,4 +21,4 @@ defmodule MbtaScheduleReaderWeb.MetroScheduleController do
       calculateNextTrain()
     json(conn, Enum.take(predictions, 3))
   end
-end
+end 
